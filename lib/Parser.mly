@@ -9,6 +9,9 @@ open Syntax
 %token EOF
 
 %type <Syntax.regexp> parse
+%type <Syntax.regexp> regexp
+%type <Syntax.regexp> char
+
 %start parse
 
 %left SEQ
