@@ -1,0 +1,11 @@
+(ocamllex Lexer)
+
+(menhir
+ (modules Parser))
+
+(library
+ (name menhir_regexp)
+ (flags
+  ; menhir generates instances of the "unused rec flag"
+  ; warning
+  (:standard -w -39-33)))
