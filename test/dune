@@ -1,3 +1,6 @@
 (test
  (name test_menhir_regexp)
- (libraries menhir_regexp))
+ (libraries menhir_regexp)
+ (flags
+  (:standard -w -32))
+ )
