@@ -17,6 +17,7 @@ open Syntax
 
 %start parse
 
+// %nonassoc LOWER UPPER LPAREN
 %left OR
 %left SEQ
 %left STAR

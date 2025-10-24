@@ -5,6 +5,14 @@ type regexp =
   | Lower of string (* 7 *)
   | Upper of string (* 7 *)
 
+let rec dump = function 
+  | Or (re1, re2) -> 
+    "Or (" ^ dump re1 ^ ", " ^ dump re2 ^ ")" 
+  | Seq (re1, re2) -> 
+    "Seq (" ^ dump re1 ^ ", " ^ dump re2 ^ ")" 
+  | Star re -> "Star " ^ dump re
+  | Lower ch -> "Lower \"" ^ ch ^ "\""
+  | Upper ch -> "Upper \"" ^ ch ^ "\""
 
 let print re = 
   let rec go prio = function
