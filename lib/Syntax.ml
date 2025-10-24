@@ -10,7 +10,7 @@ let rec dump = function
     "Or (" ^ dump re1 ^ ", " ^ dump re2 ^ ")" 
   | Seq (re1, re2) -> 
     "Seq (" ^ dump re1 ^ ", " ^ dump re2 ^ ")" 
-  | Star re -> "Star " ^ dump re
+  | Star re -> "Star (" ^ dump re ^ ")"
   | Lower ch -> "Lower \"" ^ ch ^ "\""
   | Upper ch -> "Upper \"" ^ ch ^ "\""
 
