@@ -1,22 +1,22 @@
 type regexp = 
-  | Or of regexp * regexp (* 1 *)
-  | Seq of regexp * regexp (* 2 *)
-  | Star of regexp (* 3 *)
-  | Lower of string (* 4 *)
-  | Upper of string (* 4 *)
+  | Or of regexp * regexp (* 1 2 *)
+  | Seq of regexp * regexp (* 3 4 *)
+  | Star of regexp (* 5 6 *)
+  | Lower of string (* 7 *)
+  | Upper of string (* 7 *)
 
 
 let print re = 
   let rec go prio = function
   | Or (re1, re2) ->
-    let inner = go 1 re1 ^ "|" ^ go 1 re2 in
-    if 1 > prio then inner else "(" ^ inner ^ ")"
+    let inner = go 1 re1 ^ "|" ^ go 2 re2 in
+    if 1 >= prio then inner else "(" ^ inner ^ ")"
   | Seq (re1, re2) -> 
-    let inner = go 2 re1 ^ go 2 re2 in
-    if 1 > prio then inner else "(" ^ inner ^ ")"
+    let inner = go 3 re1 ^ go 4 re2 in
+    if 3 >= prio then inner else "(" ^ inner ^ ")"
   | Star re -> 
-    let inner = go 3 re ^ "*" in 
-    if 3 > prio then inner else "(" ^ inner ^ ")"
+    let inner = go 5 re ^ "*" in 
+    if 5 >= prio then inner else "(" ^ inner ^ ")"
   | Lower ch -> ch
   | Upper ch -> ch
   in go 0 re 
